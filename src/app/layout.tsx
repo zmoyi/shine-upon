@@ -42,7 +42,7 @@ export default function RootLayout({
             {children}
         </main>
         <footer>
-            <div className={'flex justify-center items-center px-4 py-5 text-white text-xs font-light'}>
+            <div className={'flex uppercase justify-center items-center px-4 py-5 text-white text-xs font-light'}>
                 © 2023 SOLITUDE 随欲. All Right Reserved.
             </div>
         </footer>
