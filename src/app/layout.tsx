@@ -1,11 +1,13 @@
-import type {Metadata} from 'next'
-import {Inter} from 'next/font/google'
-import './globals.css'
 import React from "react";
+import type {Metadata} from 'next'
+import './globals.css'
 import Image from "next/image";
 import WechatImg from "../../public/WechatIMG1.jpg";
-
-const inter = Inter({subsets: ['latin']})
+import {ThemeProvider} from "@/components/ThemeProvider";
+import {cn} from "@/lib/utils";
+import {ModeToggle} from "@/components/ModeToggle";
+import Sidebar from "@/components/pages/Sidebar";
+import Controls from "@/components/pages/Controls";
 
 export const metadata: Metadata = {
     title: 'Create Next App',
@@ -18,38 +20,59 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="zh">
-        <body className={inter.className}>
-        <header
-            className={'flex flex-row justify-between items-center px-4 py-5 bg-neutral-100/90 dark:bg-neutral-900/90 text-white rounded-b-lg sticky top-0'}>
-            <div>
-                <h6 className={'text-black dark:text-white font-serif'}>index</h6>
-            </div>
-            <div className={'w-24 h-8 text-white dark:text-black bg-neutral-900/90 dark:bg-stone-50 rounded-full text-sm flex justify-center items-center'}>
-                login
-            </div>
-        </header>
-        <main className={'mt-4'}>
-            <div className={"m-4 font-bold"}>
-                Is Me
-            </div>
-            <div
-                className={'m-4 p-4 bg-neutral-100/90 dark:bg-neutral-900/90 rounded-lg flex flex-row justify-end items-start'}>
-                <div className={'flex flex-row'}>
-                    <div className={'flex flex-col justify-end items-end mr-2'}>
-                        <h1 className={'text-base'}>刘铭熙</h1>
-                        <h6 className={'text-sm font-light'}>我愿在这星球上种一朵玫瑰花，看她花开花落.</h6>
-                    </div>
-                    <Image className={'h-16 w-16 rounded-lg'} src={WechatImg} alt={'刘铭熙'}/>
+        <html lang="zh" suppressHydrationWarning>
+        <body className={cn(
+            "min-h-screen bg-background font-sans antialiased",
+        )}>
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange={false}
+        >
+
+            <div className={'flex md:px-24 lg:px-10 xl:px-36'}>
+                <div className={'hidden lg:block lg:flex-1'}>
+                    <Sidebar/>
+                </div>
+                <div className={'basis-1/1 lg:basis-1/2'}>
+                    <header
+                        className={'flex flex-row justify-between items-center px-4 py-5 rounded-b-lg sticky top-0 backdrop-blur supports-[backdrop-filter]:bg-background/60'}>
+                        <div>
+                            <h6 className={'font-serif'}>逐光</h6>
+                        </div>
+                        <ModeToggle/>
+                    </header>
+                    <main className={'mt-4'}>
+                        <div className={"m-4 font-bold"}>
+                            Is Me
+                        </div>
+                        <div
+                            className={'m-4 p-4 rounded-lg flex flex-row justify-end items-start bg-stone-100/30 dark:bg-stone-900/60'}>
+                            <div className={'flex flex-row'}>
+                                <div className={'flex flex-col justify-end items-end mr-2'}>
+                                    <h1 className={'text-base'}>刘铭熙</h1>
+                                    <h6 className={'text-sm font-light'}>我愿在这星球上种一朵玫瑰花，看她花开花落.</h6>
+                                </div>
+                                <Image className={'h-16 w-16 rounded-lg'} src={WechatImg} alt={'刘铭熙'}/>
+                            </div>
+                        </div>
+                        {children}
+                    </main>
+                    <footer>
+                        <div
+                            className={'flex uppercase justify-center items-center px-4 py-5 dark:text-white text-xs font-light'}>
+                            © 2023 SOLITUDE 随欲. All Right Reserved.
+                        </div>
+                    </footer>
+                </div>
+                <div className={'hidden lg:block lg:flex-1'}>
+                    <Controls/>
                 </div>
             </div>
-            {children}
-        </main>
-        <footer>
-            <div className={'flex uppercase justify-center items-center px-4 py-5 dark:text-white text-xs font-light'}>
-                © 2023 SOLITUDE 随欲. All Right Reserved.
-            </div>
-        </footer>
+
+
+        </ThemeProvider>
         </body>
         </html>
     )
