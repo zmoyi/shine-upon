@@ -7,7 +7,7 @@ const Sidebar = () => {
     return (
         <>
             <div
-                className={'flex flex-col h-screen justify-center items-end sticky top-0 left-0 bottom-0 border-r pr-10'}>
+                className={'flex flex-col h-screen justify-start items-end sticky top-0 left-0 bottom-0 border-r pt-10 pr-10'}>
                 <div className={'my-4 flex flex-col items-center space-y-4'}>
                     <Button className={'rounded-full'} variant={'ghost'} size="icon">
                         <User2Icon className="h-4 w-4" />
