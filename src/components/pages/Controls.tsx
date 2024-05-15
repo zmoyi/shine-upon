@@ -4,7 +4,7 @@ const Controls = () => {
     return (
         <>
             <div
-                className={'flex flex-col h-screen justify-start items-start sticky top-0 left-0 bottom-0 border-l pt-10 pl-10'}>
+                className={'flex flex-col h-screen justify-start items-start sticky top-20 left-0 bottom-0 pt-5 pl-10 z-0'}>
                 <div className={'space-y-2'}>
                     <h6 className={'text-base font-bold'}>Posts</h6>
                     <p className={'text-xs text-stone-500 font-light'}>A community app by Read.cv</p>
