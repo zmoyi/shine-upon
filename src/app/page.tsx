@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <>
             <div className={"m-4 font-bold"}>
-                All posts
+                All Posts
             </div>
             {
             postData.map((item, index)=>{
